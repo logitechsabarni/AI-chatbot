@@ -1,0 +1,40 @@
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Environment and dependency folders
+venv/
+env/
+.venv/
+ENV/
+.Python
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE configs
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Local database and vector store persistence
+db/
+chroma/
+
+# Streamlit settings
+.streamlit/config.toml
+.streamlit/secrets.toml
+
+# OS-specific
+*.swp
