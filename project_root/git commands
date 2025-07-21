@@ -1,18 +1,3 @@
-# Step 1: Initialize Git (run only once)
-git init
-
-# Step 2: Add your GitHub remote (replace with your actual GitHub repo URL)
-git remote add origin https://github.com/logitechsabarni/AI-chatbot.git
-
-# Step 3: Create or update your .gitignore file to avoid pushing sensitive files
-echo -e ".env\n__pycache__/\n*.pyc\n*.pyo\n*.pyd\n*.db\n*.sqlite3\ninstance/\n.env.*\n.venv/\nvenv/\nbuild/\ndist/\n.DS_Store" > .gitignore
-
-# Step 4: Stage all project files
 git add .
-
-# Step 5: Commit changes with a descriptive message
-git commit -m "Initial commit with working AI chatbot and updated .gitignore"
-
-# Step 6: Push to the main branch on GitHub
-git branch -M main
-git push -u origin main
+git commit -m "Updated backend: new OpenAI SDK integration"
+git push
