@@ -1,19 +1,14 @@
-# Ignore Python cache
-__pycache__/
-*.py[cod]
-
-# Ignore environment folders
-env/
-venv/
-ENV/
-
-# Ignore config files
 .env
-*.env
-
-# Ignore OS generated files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+instance/
+.env.*
+.venv/
+venv/
+build/
+dist/
 .DS_Store
-Thumbs.db
-
-# Ignore VS Code settings (optional)
-.vscode/
