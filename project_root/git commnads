@@ -1,7 +1,19 @@
-cd project_root
+# Initialize Git
 git init
+
+# Secure your API key by ignoring .env
+echo .env >> .gitignore
+git rm --cached .env
+
+# Stage all files
 git add .
-git commit -m "Complete chatbot app with chat history, voice and image input"
+
+# Commit your changes
+git commit -m "Final version: added voice/image input, chat history, and secured API key"
+
+# Connect to your GitHub repo (skip this if already connected)
 git remote add origin https://github.com/logitechsabarni/AI-chatbot.git
+
+# Push to GitHub
 git branch -M main
 git push -u origin main
