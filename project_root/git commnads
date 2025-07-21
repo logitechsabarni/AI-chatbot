@@ -1,19 +1,9 @@
-# Initialize Git
-git init
+cd project_root
 
-# Secure your API key by ignoring .env
-echo .env >> .gitignore
-git rm --cached .env
+# Create the file
+echo "flask\nopenai\nflask-cors\npython-dotenv" > requirements.txt
 
-# Stage all files
-git add .
-
-# Commit your changes
-git commit -m "Final version: added voice/image input, chat history, and secured API key"
-
-# Connect to your GitHub repo (skip this if already connected)
-git remote add origin https://github.com/logitechsabarni/AI-chatbot.git
-
-# Push to GitHub
-git branch -M main
-git push -u origin main
+# Stage and commit
+git add requirements.txt
+git commit -m "Add requirements.txt for Render deployment"
+git push
