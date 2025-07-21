@@ -1,14 +1,6 @@
-.env
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-*.db
-*.sqlite3
-instance/
-.env.*
-.venv/
-venv/
-build/
-dist/
+.env
+*.mp3
+*.wav
 .DS_Store
