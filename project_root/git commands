@@ -8,7 +8,7 @@ git add .
 git commit -m "Initial backend with voice and image input"
 
 # Connect to your GitHub repo (replace the link with your actual repo URL)
-git remote add origin https://github.com/logitechsabarni/smart-ai-chatbot-backend.git
+git remote add origin https://github.com/logitechsabarni/AI-chatbot.git
 
 # Push the code
 git branch -M main
