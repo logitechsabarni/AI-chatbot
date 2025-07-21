@@ -8,7 +8,7 @@ import base64
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)  # Needed for session
+app.secret_key = os.urandom(24)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
@@ -26,11 +26,9 @@ def index():
         user_input = request.form.get("user_input")
         uploaded_file = request.files.get("image")
 
-        # Handle image upload
         if uploaded_file and allowed_file(uploaded_file.filename):
             file_data = base64.b64encode(uploaded_file.read()).decode("utf-8")
             base64_image = f"data:image/jpeg;base64,{file_data}"
-            session["messages"].append({"role": "user", "content": "Analyze this image."})
 
             try:
                 result = openai.ChatCompletion.create(
@@ -44,6 +42,8 @@ def index():
                     max_tokens=500
                 )
                 response = result.choices[0].message["content"]
+                session["messages"].append({"role": "user", "content": "[Image uploaded]"})
+                session["messages"].append({"role": "assistant", "content": response})
             except Exception as e:
                 response = f"Error with image input: {e}"
 
