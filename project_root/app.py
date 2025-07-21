@@ -16,6 +16,13 @@ CORS(app)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # ==========================
+# ✅ Root Route for Render Health Check
+# ==========================
+@app.route("/")
+def home():
+    return jsonify({"message": "Smart AI Chatbot is running!"})
+
+# ==========================
 # Chat Endpoint
 # ==========================
 @app.route("/chat", methods=["POST"])
@@ -34,7 +41,6 @@ def chat():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
 
 # ==========================
 # Voice Input Endpoint
@@ -67,7 +73,6 @@ def voice():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
 # ==========================
 # Image Input Endpoint
 # ==========================
@@ -93,7 +98,6 @@ def image():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
 
 # ==========================
 # Port Setup for Render
