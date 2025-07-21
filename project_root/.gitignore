@@ -1,6 +1,32 @@
-.env
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
+*.pyd
+*.env
+.env
+.env.*
+
+# Virtual environments
 env/
 venv/
+ENV/
+.venv/
+
+# macOS
+.DS_Store
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS / backup
+*.bak
+*.swp
+*~
+
+# Uploads (if you add any later)
+uploads/
