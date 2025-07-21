@@ -1,34 +1,37 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from openai import OpenAI
+import openai
 import os
+
+# Load environment variables
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 CORS(app)
 
-# Initialize OpenAI client with your API key
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+@app.route("/", methods=["GET"])
+def index():
+    return jsonify({"message": "Smart AI Chatbot is running!"})
 
 @app.route("/chat", methods=["POST"])
 def chat():
+    data = request.json
+    user_input = data.get("message", "")
+    
     try:
-        user_message = request.json.get("message")
-        if not user_message:
-            return jsonify({"error": "Message is required"}), 400
-
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",  # Or "gpt-4" if you have access
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": user_message}
+                {"role": "user", "content": user_input}
             ]
         )
-
-        ai_message = response.choices[0].message.content
-        return jsonify({"response": ai_message})
-
+        reply = response['choices'][0]['message']['content']
+        return jsonify({"reply": reply})
+    
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
