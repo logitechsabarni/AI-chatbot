@@ -1,0 +1,7 @@
+cd project_root
+git init
+git add .
+git commit -m "Complete chatbot app with chat history, voice and image input"
+git remote add origin https://github.com/logitechsabarni/AI-chatbot.git
+git branch -M main
+git push -u origin main
