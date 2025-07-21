@@ -1,32 +1,19 @@
-# Python
+# Ignore Python cache
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
-*.env
-.env
-.env.*
 
-# Virtual environments
+# Ignore environment folders
 env/
 venv/
 ENV/
-.venv/
 
-# macOS
+# Ignore config files
+.env
+*.env
+
+# Ignore OS generated files
 .DS_Store
+Thumbs.db
 
-# VSCode / PyCharm
+# Ignore VS Code settings (optional)
 .vscode/
-.idea/
-
-# Logs
-*.log
-
-# OS / backup
-*.bak
-*.swp
-*~
-
-# Uploads (if you add any later)
-uploads/
