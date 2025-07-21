@@ -1,0 +1,19 @@
+# Treat all files as UTF-8 text
+* text=auto
+
+# Normalize line endings to LF in repo, convert to CRLF on checkout for Windows
+*.py text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.txt text eol=lf
+*.md text eol=lf
+
+# Set binary files (no diff)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+
+# Flask/OpenAI-specific
+*.env text eol=lf
