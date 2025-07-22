@@ -7,3 +7,4 @@ whisper
 torch
 tqdm
 pytesseract
+gunicorn
