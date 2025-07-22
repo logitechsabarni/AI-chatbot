@@ -8,15 +8,12 @@ import pytesseract
 import whisper
 import tempfile
 
-# Load environment variables
 load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-# Load OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
-print("✅ OpenAI Key Loaded:", openai.api_key is not None)  # Debug check
 
 # ==========================
 # ✅ Root Route for Render Health Check
@@ -25,8 +22,13 @@ print("✅ OpenAI Key Loaded:", openai.api_key is not None)  # Debug check
 def home():
     return jsonify({"message": "Smart AI Chatbot is running!"})
 
+# ✅ Ping Route for Frontend Health Check
+@app.route("/ping", methods=["GET"])
+def ping():
+    return jsonify({"message": "pong"}), 200
+
 # ==========================
-# Chat Endpoint
+# 💬 Chat Endpoint
 # ==========================
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -37,10 +39,7 @@ def chat():
 
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": user_input}
-            ]
+            messages=[{"role": "user", "content": user_input}]
         )
         answer = response["choices"][0]["message"]["content"]
         return jsonify({"response": answer})
@@ -49,7 +48,7 @@ def chat():
         return jsonify({"error": str(e)}), 500
 
 # ==========================
-# Voice Input Endpoint
+# 🎙️ Voice Input Endpoint
 # ==========================
 @app.route("/voice", methods=["POST"])
 def voice():
@@ -80,7 +79,7 @@ def voice():
         return jsonify({"error": str(e)}), 500
 
 # ==========================
-# Image Input Endpoint
+# 🖼️ Image Input Endpoint
 # ==========================
 @app.route("/image", methods=["POST"])
 def image():
@@ -106,7 +105,7 @@ def image():
         return jsonify({"error": str(e)}), 500
 
 # ==========================
-# Port Setup for Render or Local
+# 🚀 Run App (for Render)
 # ==========================
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
