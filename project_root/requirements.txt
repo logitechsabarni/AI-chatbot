@@ -5,6 +5,7 @@ python-dotenv
 pillow
 whisper
 torch
+torchaudio
 tqdm
 pytesseract
 gunicorn
